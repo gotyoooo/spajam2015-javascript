@@ -1,2 +1,73 @@
-spajam2015-javascript
-test
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta charset="UTF-8">
+        <title>UDEGE</title>
+        <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.1.0/velocity.js"></script>
+        
+        <style>
+            body {
+                background-color: #FFDAB9;
+            }
+            
+            .udege {
+                display: block;
+                position: absolute;
+                width: 2px;
+                height: 1px;
+                background-color: #000;
+            }
+        </style>
+    </head>
+
+    <body>
+        
+        <script type="text/javascript">
+            
+            $(window).load(function(){
+                
+                var i = 0;
+                
+                $(function(){
+                    setInterval(function(){
+                        
+                        var udege_id = 'udege' + i.toString();
+                        addUdege(udege_id);
+                        growUdege(udege_id);
+                        i++;
+
+
+                    },1000);
+                });                 
+            });
+            
+            function addUdege(udege_id) {
+                $('body').append("<div id='" + udege_id +"' class='udege'></div>");
+                
+                var bottom = Math.floor( Math.random() * 100 );
+                var left = Math.floor( Math.random() * 100 );
+                
+                $('#' + udege_id).css({
+                    "bottom": bottom + "%",
+                    "left": left + "%"
+                });
+            }
+            
+            function growUdege(udege_id) {
+                $('#' + udege_id).velocity(
+                    {
+                        "height": "30px"
+                    }, {
+                        // Option
+                        duration: 500,
+                        easing: 'ease-in',
+                        loop: 0,
+                        delay: 0
+                    }
+                );
+            }
+        </script>
+    </body>
+</html>
