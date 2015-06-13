@@ -43,7 +43,6 @@ body {
 header {
     height: 10%;
     background-color: #3c84d5;
-    z-index: 1;
 }
 
 h1 {
@@ -55,20 +54,33 @@ h1 {
     padding: 0;
     font-size: 3rem;
     color: white;
-    z-index: 2;
 }
 
 header a {
-    display: block;
-    height: 100%;
-    width: 2rem;
-    padding-top: 5%;
-    padding-left: 5%;
+    position: absolute;
+    left: 0%;
+    width: 10%;
+    height: 10%;
+    line-height: 250%;
+    margin: 0;
+    padding: 0;
+    font-size: 3rem;
+    color: white;
+    text-decoration:none;
+    background:none;
+    border:none;
+    font-size:0;
+    line-height:0;
+    overflow:visible;
+    cursor:pointer;
+    outline: none;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 
 header a img {
+    position: absolute;
     height: 50%;
-    z-index: 100;
+    top: 25%;
 }
 
 .gesture {
