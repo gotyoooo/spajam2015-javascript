@@ -166,12 +166,12 @@ form label {
     font-weight: bold;
     vertical-align: top;
     color: #fff;
-    background: #036;
+    background: #fafaff;
 }
 .excuse_list_table td{
     vertical-align: top;
     border-bottom: 1px solid #ccc;
-    background: #eee;
+    background: #fafaff;
 }
 .excuse_list_table td.button{
     text-align: center;
@@ -205,7 +205,7 @@ p.tabs a {
     padding: 0;
     text-align: center;
     font-size: 15px;
-    background-color: #dcf2ff;
+    background-color: #ffffff;
     text-decoration: none;
     color: #bbb;
     padding: 5px 0;
