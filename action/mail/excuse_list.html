@@ -10,28 +10,28 @@
 
     <body>
         <header>
-            <h1>みんなの言い訳(電話)</h1>
+            <h1>みんなの言い訳(メール)</h1>
             <a class="back_button" href="input.html"><img src="./img/back.png"></a>
         </header>
         
         <table id="excuse_list_table">
-            <tr><th>名前</th><th colspan="2">グループ</th></tr>
+            <tr><th>件名</th><th colspan="2">本文</th></tr>
         </table>
         
         <script type="text/javascript">
             var objTable = document.getElementById("excuse_list_table");
 
             var req = new XMLHttpRequest();
-            req.open("get", "http://210.140.161.149/GetExcuseTel.php", false);
+            req.open("get", "http://210.140.161.149/GetExcuseMail.php", false);
             req.send("");
             //alert(req.responseText);
             var jsonObj = JSON.parse(req.responseText);
             for (var i = 0, len = jsonObj.length; i < len; i++) {
                 var trElement = document.createElement('tr');
                 var td1Element = document.createElement('td');
-                td1Element.innerHTML = jsonObj[i]['excuse_tel_name'];
+                td1Element.innerHTML = jsonObj[i]['excuse_mail_subject'];
                 var td2Element = document.createElement('td');
-                td2Element.innerHTML = jsonObj[i]['excuse_tel_group'];
+                td2Element.innerHTML = jsonObj[i]['excuse_mail_message'];
                 trElement.appendChild(td1Element);
                 trElement.appendChild(td2Element);
 
@@ -40,15 +40,16 @@
                 formElement.action = "input.html";
                 var input1Element = document.createElement('input');
                 input1Element.type = "hidden";
-                input1Element.name = "excuse_tel_name";
-                input1Element.value = jsonObj[i]['excuse_tel_name'];
+                input1Element.name = "excuse_mail_subject";
+                input1Element.value = jsonObj[i]['excuse_mail_subject'];
                 var input2Element = document.createElement('input');
                 input2Element.type = "hidden";
-                input2Element.name = "excuse_tel_group";
-                input2Element.value = jsonObj[i]['excuse_tel_group'];
+                input2Element.name = "excuse_mail_message";
+                input2Element.value = jsonObj[i]['excuse_mail_message'];
                 var inputSubmitElement = document.createElement('input');
                 inputSubmitElement.type = "submit";
                 inputSubmitElement.value = "これ使う";
+                inputSubmitElement.class = "button";
 
                 formElement.appendChild(input1Element);
                 formElement.appendChild(input2Element);

@@ -1,0 +1,178 @@
+@charset "utf-8";
+/* 基本 */
+html {
+    width: 100%;
+    height: 100%;
+    font-size : 8px; 
+}
+
+body {
+        width: 100%;
+        height: 100%;
+    margin: 0;
+        padding: 0;
+    font-family: 'Hiragino Kaku Gothic ProN';
+        text-align: center;
+        background-color: white;
+}
+ 
+@media screen and (min-width : 320px){
+    html{ font-size : 8px;}
+}
+
+@media screen and (min-width : 360px){
+    html{ font-size : 10px;}
+}
+
+@media screen and (min-width : 480px){
+    html{ font-size : 12px;}
+}
+
+@media screen and (min-width : 640px){
+    html{ font-size : 14px;}
+}
+
+@media screen and (min-width : 768px){
+    html{ font-size : 16px;}
+}
+
+@media screen and (min-width : 1024px) {
+    html{ font-size : 24px;}
+}
+
+header {
+    height: 10%;
+    background-color: #3c84d5;
+}
+
+h1 {
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    line-height: 250%;
+    margin: 0;
+    padding: 0;
+    font-size: 3rem;
+    color: white;
+}
+
+header a {
+    position: absolute;
+    left: 0%;
+    width: 10%;
+    height: 10%;
+    line-height: 250%;
+    margin: 0;
+    padding: 0;
+    font-size: 3rem;
+    color: white;
+    text-decoration:none;
+    background:none;
+    border:none;
+    font-size:0;
+    line-height:0;
+    overflow:visible;
+    cursor:pointer;
+    outline: none;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+header a img {
+    position: absolute;
+    height: 50%;
+    top: 25%;
+}
+
+form label {
+    display: block;
+    height: 5%;
+    font-size: 3rem;
+}
+
+.input_block {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#from {
+    width: 80%;
+    height: 3%;
+    font-size: 2rem;
+}
+
+#to {
+    width: 80%;
+    height: 3%;
+    font-size: 2rem;
+}
+
+#subject {
+    width: 80%;
+    height: 3%;
+    font-size: 2rem;
+}
+
+#message {
+    width: 80%;
+    height: 3%;
+    font-size: 2rem;
+}
+
+#button {
+    display: block;
+    margin-left: 35%;
+    width: 30%;
+    text-decoration:none;
+    background:none;
+    border:none;
+    font-size:0;
+    line-height:0;
+    overflow:visible;
+    cursor:pointer;
+    outline: none;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+#button img {
+    width: 100%;
+    background:none;
+    border:0;
+    font-size:0;
+    line-height:0;
+    overflow:visible;
+    cursor:pointer;
+    outline: none;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+#button:hover {
+    transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+}
+
+#excuse_list_table {
+    width: 95%;
+    margin: 0 auto;
+    font-size: 13px;
+    border-collapse: separate;
+    border-spacing: 1px;
+    text-align: left;
+    line-height: 1.5;
+}
+#excuse_list_table th{
+    font-weight: bold;
+    vertical-align: top;
+    color: #fff;
+    background: #036;
+}
+#excuse_list_table td{
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+    background: #eee;
+}
+#excuse_list_table td.button{
+    vertical-align: middle;
+}
