@@ -46,6 +46,10 @@
                 input2Element.type = "hidden";
                 input2Element.name = "excuse_tel_group";
                 input2Element.value = jsonObj[i]['excuse_tel_group'];
+                var input3Element = document.createElement('input');
+                input3Element.type = "hidden";
+                input3Element.name = "excuse_tel_id";
+                input3Element.value = jsonObj[i]['excuse_tel_id'];
                 var inputSubmitElement = document.createElement('input');
                 inputSubmitElement.type = "submit";
                 inputSubmitElement.value = "これ使う";
