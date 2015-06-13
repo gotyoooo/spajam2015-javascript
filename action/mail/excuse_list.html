@@ -15,8 +15,8 @@
         </header>
         <div id="tabbox">
             <p class="tabs">
-                <a href="#tab1" class="tab1" onclick="ChangeTab('tab1'); return false;">新着</a>
-                <a href="#tab2" class="tab2" onclick="ChangeTab('tab2'); return false;">人気</a>
+                <a href="#tab1" id="tab1_a" class="tab1" onclick="ChangeTab('tab1'); return false;">新着順</a>
+                <a href="#tab2" id="tab2_a" class="tab2" onclick="ChangeTab('tab2'); return false;">人気順</a>
             </p>
             
             <div id="tab1" class="tab">
@@ -133,8 +133,11 @@
                // 全部消す
                document.getElementById('tab1').style.display = 'none';
                document.getElementById('tab2').style.display = 'none';
+               document.getElementById("tab1_a").style.color = '#bbb';
+               document.getElementById("tab2_a").style.color = '#bbb';
                // 指定箇所のみ表示
                document.getElementById(tabname).style.display = 'block';
+               document.getElementById(tabname + "_a").style.color = '#3c84d5';
             }
         </script>
     </body>

@@ -191,18 +191,27 @@ p.tabs {
     padding: 0px;
 }
 p.tabs a {
-   /* ▼(B-2)リンクをタブのように見せる */
-   display: block;
-   width: 50%;
-   float: left;
-   margin: 0;
-   padding: 0;
-   text-align: center;
-   border-radius: 12px 12px 0px 0px; /* 角を丸くする */
+    /* ▼(B-2)リンクをタブのように見せる */
+    display: block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 15px;
+    background-color: #dcf2ff;
+    text-decoration: none;
+    color: #bbb;
+    padding: 5px 0;
 }
-/* 各タブの配色 */
-p.tabs a.tab1 { background-color: blue;  color: white; }
-p.tabs a.tab2 { background-color: #aaaa00; color:white;}
+#tab2_a {
+    border-left: solid 1px #bbb;
+}
 
 /* タブ中身のボックス */
 div.tab {
