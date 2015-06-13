@@ -13,19 +13,81 @@
             <h1>みんなの言い訳(電話)</h1>
             <a class="back_button" href="input.html"><img src="./img/back.png"></a>
         </header>
-        
-        <table id="excuse_list_table">
-            <tr><th>名前</th><th colspan="2">グループ</th></tr>
-        </table>
+        <div id="tabbox">
+            <p class="tabs">
+                <a href="#tab1" class="tab1" onclick="ChangeTab('tab1'); return false;">新着</a>
+                <a href="#tab2" class="tab2" onclick="ChangeTab('tab2'); return false;">人気</a>
+            </p>
+
+            <div id="tab1" class="tab">
+                <table class="excuse_list_table" id="new_table">
+                    <tr><th>名前</th><th colspan="2">グループ</th></tr>
+                </table>
+            </div>
+
+            <div id="tab2" class="tab">
+                <table class="excuse_list_table" id="rank_table">
+                    <tr><th>名前</th><th colspan="2">グループ</th></tr>
+                </table>
+            </div>
+        </div>
         
         <script type="text/javascript">
-            var objTable = document.getElementById("excuse_list_table");
+            // デフォルトのタブを選択
+            ChangeTab('tab1');
 
+            // 新着
             var req = new XMLHttpRequest();
             req.open("get", "http://210.140.161.149/GetExcuseTel.php", false);
             req.send("");
-            //alert(req.responseText);
             var jsonObj = JSON.parse(req.responseText);
+            var objTable = document.getElementById("new_table");
+            for (var i = 0, len = jsonObj.length; i < len; i++) {
+                var trElement = document.createElement('tr');
+                var td1Element = document.createElement('td');
+                td1Element.innerHTML = jsonObj[i]['excuse_tel_name'];
+                var td2Element = document.createElement('td');
+                td2Element.innerHTML = jsonObj[i]['excuse_tel_group'];
+                trElement.appendChild(td1Element);
+                trElement.appendChild(td2Element);
+
+                var formElement = document.createElement('form');
+                formElement.method = "get";
+                formElement.action = "input.html";
+                var input1Element = document.createElement('input');
+                input1Element.type = "hidden";
+                input1Element.name = "excuse_tel_name";
+                input1Element.value = jsonObj[i]['excuse_tel_name'];
+                var input2Element = document.createElement('input');
+                input2Element.type = "hidden";
+                input2Element.name = "excuse_tel_group";
+                input2Element.value = jsonObj[i]['excuse_tel_group'];
+                var input3Element = document.createElement('input');
+                input3Element.type = "hidden";
+                input3Element.name = "excuse_tel_id";
+                input3Element.value = jsonObj[i]['excuse_tel_id'];
+                var inputSubmitElement = document.createElement('input');
+                inputSubmitElement.type = "submit";
+                inputSubmitElement.value = "これ使う";
+
+                formElement.appendChild(input1Element);
+                formElement.appendChild(input2Element);
+                formElement.appendChild(input3Element);
+                formElement.appendChild(inputSubmitElement);
+
+                var td3Element = document.createElement('td');
+                td3Element.appendChild(formElement);
+                trElement.appendChild(td3Element);
+
+                objTable.appendChild(trElement);
+            }
+
+            // ランキング
+            var req = new XMLHttpRequest();
+            req.open("get", "http://210.140.161.149/GetExcuseTelRank.php", false);
+            req.send("");
+            var jsonObj = JSON.parse(req.responseText);
+            var objTable = document.getElementById("rank_table");
             for (var i = 0, len = jsonObj.length; i < len; i++) {
                 var trElement = document.createElement('tr');
                 var td1Element = document.createElement('td');
@@ -63,6 +125,15 @@
                 trElement.appendChild(td3Element);
 
                 objTable.appendChild(trElement);
+            }
+
+
+            function ChangeTab(tabname) {
+               // 全部消す
+               document.getElementById('tab1').style.display = 'none';
+               document.getElementById('tab2').style.display = 'none';
+               // 指定箇所のみ表示
+               document.getElementById(tabname).style.display = 'block';
             }
         </script>
     </body>

@@ -153,8 +153,8 @@ form label {
     -ms-transform: scale(0.9);
 }
 
-#excuse_list_table {
-    width: 95%;
+.excuse_list_table {
+    width: 100%;
     margin: 0 auto;
     font-size: 13px;
     border-collapse: separate;
@@ -162,18 +162,51 @@ form label {
     text-align: left;
     line-height: 1.5;
 }
-#excuse_list_table th{
+.excuse_list_table th{
     font-weight: bold;
     vertical-align: top;
     color: #fff;
     background: #036;
 }
-#excuse_list_table td{
+.excuse_list_table td{
     vertical-align: top;
     border-bottom: 1px solid #ccc;
     background: #eee;
 }
-#excuse_list_table td.button{
+.excuse_list_table td.button{
     text-align: center;
     vertical-align: middle;
+}
+
+/* 表示領域全体 */
+div.tabbox { 
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* タブ部分 */
+p.tabs {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+p.tabs a {
+   /* ▼(B-2)リンクをタブのように見せる */
+   display: block;
+   width: 50%;
+   float: left;
+   margin: 0;
+   padding: 0;
+   text-align: center;
+   border-radius: 12px 12px 0px 0px; /* 角を丸くする */
+}
+/* 各タブの配色 */
+p.tabs a.tab1 { background-color: blue;  color: white; }
+p.tabs a.tab2 { background-color: #aaaa00; color:white;}
+
+/* タブ中身のボックス */
+div.tab {
+   overflow: auto;
+   clear: left;
 }

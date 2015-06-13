@@ -71,6 +71,11 @@
 
             $(window).load(function(){
                 var params = getParam();
+                if ("excuse_mail_id" in params) {
+                    var req = new XMLHttpRequest();
+                    req.open("get", "http://210.140.161.149/RankupExcuseMail.php?excuse_mail_id=" + decodeURIComponent(params["excuse_mail_id"]), false);
+                    req.send("");
+                }
                 if ("excuse_mail_subject" in params) {
                     var objInput = document.getElementById("subject");
                     objInput.value = decodeURIComponent(params["excuse_mail_subject"]);
