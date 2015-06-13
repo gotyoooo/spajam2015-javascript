@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta charset="UTF-8">
+        <title>UDEGE</title>
+        <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <link href="./css/input.css" type="text/css" rel="stylesheet">
+    </head>
+
+    <body>
+        <header>
+            <h1>みんなの言い訳(電話)</h1>
+            <a class="back_button" href=""><img src="./img/back.png"></a>
+        </header>
+        
+        <form>
+            
+            <div class="input_block">
+                <label for="name">名前</label>
+                <input id="name" type="text" name="name" size="20" maxlength="20">
+            </div>
+            
+            <div class="input_block">
+                <label for="group">グループ</label>
+                <select id="group" name="group">
+                    <option value='自宅' selected>自宅</option>
+                    <option value='勤務先'>勤務先</option>
+                    <option value='iphone'>iPhone</option>
+                </select>
+            </div>
+            
+            <a href="javascript:void(0);" id="button">
+                <img src="./img/fix.png">
+            </a>
+
+            
+        </form>
+        <table id="excuse_list_table">
+            <tr><th>名前</th><th>グループ</th></tr>
+        </table>
+        
+        <script type="text/javascript">
+            var objTable = document.getElementById("excuse_list_table");
+
+            var req = new XMLHttpRequest();
+            req.open("get", "http://210.140.161.149/GetExcuseTel.php", false);
+            req.send("");
+            //alert(req.responseText);
+            var jsonObj = JSON.parse(req.responseText);
+            for (var i = 0, len = jsonObj.length; i < len; i++) {
+                var trElement = document.createElement('tr');
+                var td1Element = document.createElement('td');
+                td1Element.innerHTML = jsonObj[i]['excuse_tel_name'];
+                var td2Element = document.createElement('td');
+                td2Element.innerHTML = jsonObj[i]['excuse_tel_group'];
+                trElement.appendChild(td1Element);
+                trElement.appendChild(td2Element);
+
+                var formElement = document.createElement('form');
+                formElement.method = "get";
+                formElement.action = "input.html";
+                var input1Element = document.createElement('input');
+                input1Element.type = "hidden";
+                input1Element.name = "excuse_tel_name";
+                input1Element.value = jsonObj[i]['excuse_tel_name'];
+                var input2Element = document.createElement('input');
+                input2Element.type = "hidden";
+                input2Element.name = "excuse_tel_group";
+                input2Element.value = jsonObj[i]['excuse_tel_group'];
+                var inputSubmitElement = document.createElement('input');
+                inputSubmitElement.type = "submit";
+                inputSubmitElement.value = "これ使う";
+
+                formElement.appendChild(input1Element);
+                formElement.appendChild(input2Element);
+                formElement.appendChild(inputSubmitElement);
+
+                var td3Element = document.createElement('td');
+                td3Element.appendChild(formElement);
+                trElement.appendChild(td3Element);
+
+                objTable.appendChild(trElement);
+            }
+        </script>
+    </body>
+</html>
