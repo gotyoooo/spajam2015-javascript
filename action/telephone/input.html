@@ -37,7 +37,30 @@
         
         
         <script type="text/javascript">
-            
+                /* cssのhoverをスマホ対応に */
+                var linkTouchStart = function(){
+                    thisAnchor = $(this);
+                    touchPos = thisAnchor.offset().top;
+                    moveCheck = function(){
+                        nowPos = thisAnchor.offset().top;
+                        if(touchPos == nowPos){
+                            thisAnchor.addClass("hover");
+                        }
+                    }
+                    setTimeout(moveCheck,100);
+                }
+                var linkTouchEnd = function(){
+                    thisAnchor = $(this);
+                    hoverRemove = function(){
+                        thisAnchor.removeClass("hover");
+                    }
+                    setTimeout(hoverRemove,500);
+                }
+
+                $(document).on('touchstart mousedown','a',linkTouchStart);
+                $(document).on('touchend mouseup','a',linkTouchEnd);
+                /* hoverのスマホ対応ここまで */
+
             $(window).load(function(){
                 
                 $("form").submit(function(event) {
@@ -47,7 +70,7 @@
                     var group = $('#group').val();
                     var telurl = encodeURIComponent('http://goto-test-js.s3-website-ap-northeast-1.amazonaws.com/action/telephone/call.html?name=' + name + '&group=' + group);
                     
-                    saveTelephoneUrl(telurl);
+                    //saveTelephoneUrl(telurl);
                     
                     location.href = './wait.html';
                 });
