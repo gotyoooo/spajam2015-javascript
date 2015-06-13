@@ -30,42 +30,38 @@
                 </select>
             </div>
             
-            <div id="button">
-                <button id="submit_button" type="submit"><img src="./img/fix.png"></button>
-            </div>
+            <a href="javascript:void(0);" id="button">
+                <img src="./img/fix.png">
+            </a>
         </form>
         
         
         <script type="text/javascript">
-                /* cssのhoverをスマホ対応に */
-                var linkTouchStart = function(){
-                    thisAnchor = $(this);
-                    touchPos = thisAnchor.offset().top;
-                    moveCheck = function(){
-                        nowPos = thisAnchor.offset().top;
-                        if(touchPos == nowPos){
-                            thisAnchor.addClass("hover");
-                        }
+            var linkTouchStart = function(){
+                thisAnchor = $(this);
+                touchPos = thisAnchor.offset().top;
+                moveCheck = function(){
+                    nowPos = thisAnchor.offset().top;
+                    if(touchPos == nowPos){
+                        thisAnchor.addClass("hover");
                     }
-                    setTimeout(moveCheck,100);
                 }
-                var linkTouchEnd = function(){
-                    thisAnchor = $(this);
-                    hoverRemove = function(){
-                        thisAnchor.removeClass("hover");
-                    }
-                    setTimeout(hoverRemove,500);
+                setTimeout(moveCheck,100);
+            }
+            var linkTouchEnd = function(){
+                thisAnchor = $(this);
+                hoverRemove = function(){
+                    thisAnchor.removeClass("hover");
                 }
+                setTimeout(hoverRemove,500);
+            }
 
-                $(document).on('touchstart mousedown','a',linkTouchStart);
-                $(document).on('touchend mouseup','a',linkTouchEnd);
-                /* hoverのスマホ対応ここまで */
+            $(document).on('touchstart mousedown','a',linkTouchStart);
+            $(document).on('touchend mouseup','a',linkTouchEnd);
 
             $(window).load(function(){
                 
-                $("form").submit(function(event) {
-                    
-                    event.preventDefault();
+                $("#button").click(function(event) {
                     var name = $('#name').val();
                     var group = $('#group').val();
                     var telurl = encodeURIComponent('http://goto-test-js.s3-website-ap-northeast-1.amazonaws.com/action/telephone/call.html?name=' + name + '&group=' + group);

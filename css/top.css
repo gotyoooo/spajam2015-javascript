@@ -43,6 +43,8 @@ body {
 header {
     height: 10%;
     background-color: #3c84d5;
+    margin-bottom: 5%;
+    z-index: 1;
 }
 
 h1 {
@@ -54,6 +56,7 @@ h1 {
     padding: 0;
     font-size: 3rem;
     color: white;
+    z-index: 2;
 }
 
 header a {
@@ -66,35 +69,16 @@ header a {
 
 header a img {
     height: 50%;
+    z-index: 100;
 }
 
-form label {
-    display: block;
-    height: 5%;
-    font-size: 3rem;
-}
-
-.input_block {
-    margin-top: 15%;
-    margin-bottom: 15%;
-}
-
-#name {
-    width: 80%;
-    height: 5%;
-    font-size: 3rem;
-}
-
-select  {
-    -webkit-appearance:none;
-    width: 80%;
-    font-size: 3rem;
-}
-
-#button {
-    display: block;
-    margin-left: 35%;
+.icon {
+    display: inline-block;
     width: 30%;
+    margin: 5%;
+}
+
+.icon a {
     text-decoration:none;
     background:none;
     border:none;
@@ -106,7 +90,7 @@ select  {
     -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 
-#button img {
+.icon a img {
     width: 100%;
     background:none;
     border:0;
@@ -118,7 +102,7 @@ select  {
     -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 
-#button:hover {
+.icon a img:hover {
     transform: scale(0.9);
     -webkit-transform: scale(0.9);
     -moz-transform: scale(0.9);
@@ -126,11 +110,6 @@ select  {
     -ms-transform: scale(0.9);
 }
 
-#submit_button {
-    display: block;
-}
-
-#submit_button img {
-    display: block;
-    width: 100%;
+.icon p {
+    font-size: 2rem;
 }
