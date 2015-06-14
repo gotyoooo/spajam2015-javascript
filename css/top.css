@@ -113,3 +113,37 @@ header a img {
 .icon p {
     font-size: 2rem;
 }
+
+.icon_dis {
+    display: inline-block;
+    width: 30%;
+    margin: 5%;
+}
+
+.icon_dis a {
+    text-decoration:none;
+    background:none;
+    border:none;
+    font-size:0;
+    line-height:0;
+    overflow:visible;
+    cursor:pointer;
+    outline: none;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+.icon_dis a img {
+    width: 100%;
+    background:none;
+    border:0;
+    font-size:0;
+    line-height:0;
+    overflow:visible;
+    cursor:pointer;
+    outline: none;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+.icon_dis p {
+    font-size: 2rem;
+}
