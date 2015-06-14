@@ -220,3 +220,24 @@ div.tab {
    overflow: auto;
    clear: left;
 }
+
+#list {
+    width: 100%;
+}
+
+#list a {
+    text-decoration:none;
+    background:none;
+    border:none;
+    font-size:0;
+    line-height:0;
+    overflow:visible;
+    cursor:pointer;
+    outline: none;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+#list img {
+    width: 100%;
+    margin: 0;
+}   

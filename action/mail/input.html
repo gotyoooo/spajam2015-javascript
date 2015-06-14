@@ -81,19 +81,24 @@
                 var params = getParam();
                 
                 if (typeof params !== "undefined") {
-                    if ("excuse_mail_id" in params) {
-                        var req = new XMLHttpRequest();
-                        req.open("get", "http://210.140.161.149/RankupExcuseMail.php?excuse_mail_id=" + decodeURIComponent(params["excuse_mail_id"]), false);
-                        req.send("");
-                    }
-                    if ("excuse_mail_subject" in params) {
-                        var objInput = document.getElementById("subject");
-                        objInput.value = decodeURIComponent(params["excuse_mail_subject"]);
-                    }
-                    if ("excuse_mail_message" in params) {
-                        var objInput = document.getElementById("message");
-                        objInput.value = decodeURIComponent(params["excuse_mail_message"]);
-                    }
+                    var subject = document.getElementById("subject");
+                    subject.value = decodeURIComponent(params["subject"]);
+                    var message = document.getElementById("message");
+                    message.value = decodeURIComponent(params["message"]);
+                    
+//                    if ("excuse_mail_id" in params) {
+//                        var req = new XMLHttpRequest();
+//                        req.open("get", "http://210.140.161.149/RankupExcuseMail.php?excuse_mail_id=" + decodeURIComponent(params["excuse_mail_id"]), false);
+//                        req.send("");
+//                    }
+//                    if ("excuse_mail_subject" in params) {
+//                        var objInput = document.getElementById("subject");
+//                        objInput.value = decodeURIComponent(params["excuse_mail_subject"]);
+//                    }
+//                    if ("excuse_mail_message" in params) {
+//                        var objInput = document.getElementById("message");
+//                        objInput.value = decodeURIComponent(params["excuse_mail_message"]);
+//                    }
                 }
                 
                 
