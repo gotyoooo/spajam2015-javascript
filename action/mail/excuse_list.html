@@ -45,10 +45,12 @@
 //            });
 
             $('#a1').click(function(){
-                location.href = './input.html?subject=&message=ばあさんが死んだ…';
+                location.href = './input.html?subject=&message=ばあさんが死んだ...';
             });
             $('#a2').click(function(){
-                location.href = './input.html?subject=&message=あ';
+                location.href = './input.html?subject=' + encodeURIComponent('PROBLEM: MySQL Replication Stop SQL on db01')
+                              + '&message=' + encodeURIComponent('Server : db01 Trigger : MySQL Replication Stop SQL on db01\rTrigger severity : Average\rItem : MySQL slave SQL Running\rmysql.slave_status[Slave_SQL_Running] : No');
+
             });
             $('#a3').click(function(){
                 
