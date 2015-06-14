@@ -108,7 +108,7 @@
                     var subject = $('#subject').val();
                     var message = $('#message').val();
                     
-                    var send_param = from + ',' + to + ',' + subject + ',' + message;
+                    var send_param = from + ',' + to + ',' + encodeURIComponent(subject) + ',' + encodeURIComponent(message);
                     
                     saveMailParam(send_param);
                     
