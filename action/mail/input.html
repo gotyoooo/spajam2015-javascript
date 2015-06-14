@@ -90,7 +90,9 @@
                     var subject = $('#subject').val();
                     var message = $('#message').val();
                     
-                    saveMailParam(from, to, subject, message);
+                    var send_param = from + ',' + to + ',' + subject + ',' + message;
+                    
+                    saveMailParam(send_param);
                     
                     location.href = './wait.html';
                 });
