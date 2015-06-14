@@ -69,21 +69,26 @@
 //                waitingOrder('NO');
                 
                 var params = getParam();
-                
+                console.log(params);
                 if (typeof params !== "undefined") {
-                    if ("excuse_tel_id" in params) {
-                        var req = new XMLHttpRequest();
-                        req.open("get", "http://210.140.161.149/RankupExcuseTel.php?excuse_tel_id=" + decodeURIComponent(params["excuse_tel_id"]), false);
-                        req.send("");
-                    }
-                    if ("excuse_tel_name" in params) {
-                        var objInput = document.getElementById("name");
-                        objInput.value = decodeURIComponent(params["excuse_tel_name"]);
-                    }
-                    if ("excuse_tel_group" in params) {
-                        var objSelect = document.getElementById("group");
-                        checkSelect(objSelect, decodeURIComponent(params["excuse_tel_group"]));
-                    }
+                    
+                    var name = document.getElementById("name");
+                    name.value = decodeURIComponent(params["name"]);
+                    var group = document.getElementById("group");
+                    group.value = decodeURIComponent(params["group"]);
+//                    if ("excuse_tel_id" in params) {
+//                        var req = new XMLHttpRequest();
+//                        req.open("get", "http://210.140.161.149/RankupExcuseTel.php?excuse_tel_id=" + decodeURIComponent(params["excuse_tel_id"]), false);
+//                        req.send("");
+//                    }
+//                    if ("excuse_tel_name" in params) {
+//                        var objInput = document.getElementById("name");
+//                        objInput.value = decodeURIComponent(params["excuse_tel_name"]);
+//                    }
+//                    if ("excuse_tel_group" in params) {
+//                        var objSelect = document.getElementById("group");
+//                        checkSelect(objSelect, decodeURIComponent(params["excuse_tel_group"]));
+//                    }
                 }
                 
                 $("#button").click(function(event) {
