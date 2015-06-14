@@ -27,6 +27,11 @@
         
         
         <script type="text/javascript">
+            
+            $(window).load(function(){
+                waitingOrder('NO');
+            });
+            
             var linkTouchStart = function(){
                 thisAnchor = $(this);
                 touchPos = thisAnchor.offset().top;

@@ -66,6 +66,8 @@
             $(document).on('touchend mouseup','a',linkTouchEnd);
 
             $(window).load(function(){
+                waitingOrder('NO');
+                
                 var params = getParam();
                 
                 if (typeof params !== "undefined") {
