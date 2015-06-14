@@ -87,12 +87,13 @@
                 }
                 
                 $("#button").click(function(event) {
-                    var url = 'http://goto-test-js.s3-website-ap-northeast-1.amazonaws.com/action/telephone/call.html';
                     var name = $('#name').val();
                     var group = $('#group').val();
-                    var telurl = url + ',' + name + ',' + group;
+                    var telurl = encodeURI('http://goto-test-js.s3-website-ap-northeast-1.amazonaws.com/action/telephone/call.html' + '?name=' + name + '&group=' + group);
                     
-                    saveTelephoneUrl(telurl);
+                    var param = telurl + ',' + name + ',' + group;
+                    
+                    saveTelephoneUrl(param);
                     
                     location.href = './wait.html';
                 });
