@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta charset="UTF-8">
+        <title>UDEGE</title>
+        <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <link href="./css/excuse_list.css" type="text/css" rel="stylesheet">
+    </head>
+
+    <body>
+        <header>
+            <h1>みんなの言い訳(メール)</h1>
+            <a class="back_button" href="input.html"><img src="./img/back.png"></a>
+        </header>
+        <div id="tabbox">
+            <p class="tabs">
+                <a href="#tab1" id="tab1_a" class="tab1" onclick="ChangeTab('tab1'); return false;">新着順</a>
+                <a href="#tab2" id="tab2_a" class="tab2" onclick="ChangeTab('tab2'); return false;">人気順</a>
+            </p>
+            
+            <div id="tab1" class="tab">
+                <table class="excuse_list_table" id="new_table">
+                    <tr><th>件名</th><th colspan="2">本文</th></tr>
+                </table>
+            </div>
+
+            <div id="tab2" class="tab">
+                <table class="excuse_list_table" id="rank_table">
+                    <tr><th>件名</th><th colspan="2">本文</th></tr>
+                </table>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            // デフォルトのタブを選択
+            ChangeTab('tab1');
+
+            // 新着
+            var req = new XMLHttpRequest();
+            req.open("get", "http://210.140.161.149/GetExcuseMail.php", false);
+            req.send("");
+            var jsonObj = JSON.parse(req.responseText);
+            var objTable = document.getElementById("new_table");
+            for (var i = 0, len = jsonObj.length; i < len; i++) {
+                var trElement = document.createElement('tr');
+                var td1Element = document.createElement('td');
+                td1Element.innerHTML = jsonObj[i]['excuse_mail_subject'];
+                var td2Element = document.createElement('td');
+                td2Element.innerHTML = jsonObj[i]['excuse_mail_message'];
+                trElement.appendChild(td1Element);
+                trElement.appendChild(td2Element);
+
+                var formElement = document.createElement('form');
+                formElement.method = "get";
+                formElement.action = "input.html";
+                var input1Element = document.createElement('input');
+                input1Element.type = "hidden";
+                input1Element.name = "excuse_mail_subject";
+                input1Element.value = jsonObj[i]['excuse_mail_subject'];
+                var input2Element = document.createElement('input');
+                input2Element.type = "hidden";
+                input2Element.name = "excuse_mail_message";
+                input2Element.value = jsonObj[i]['excuse_mail_message'];
+                var input3Element = document.createElement('input');
+                input3Element.type = "hidden";
+                input3Element.name = "excuse_mail_id";
+                input3Element.value = jsonObj[i]['excuse_mail_id'];
+                var inputSubmitElement = document.createElement('input');
+                inputSubmitElement.type = "submit";
+                inputSubmitElement.value = "これ使う";
+                inputSubmitElement.class = "button";
+
+                formElement.appendChild(input1Element);
+                formElement.appendChild(input2Element);
+                formElement.appendChild(input3Element);
+                formElement.appendChild(inputSubmitElement);
+
+                var td3Element = document.createElement('td');
+                td3Element.appendChild(formElement);
+                trElement.appendChild(td3Element);
+
+                objTable.appendChild(trElement);
+            }
+
+            // ランキング
+            var req = new XMLHttpRequest();
+            req.open("get", "http://210.140.161.149/GetExcuseMailRank.php", false);
+            req.send("");
+            var jsonObj = JSON.parse(req.responseText);
+            var objTable = document.getElementById("rank_table");
+            for (var i = 0, len = jsonObj.length; i < len; i++) {
+                var trElement = document.createElement('tr');
+                var td1Element = document.createElement('td');
+                td1Element.innerHTML = jsonObj[i]['excuse_mail_subject'];
+                var td2Element = document.createElement('td');
+                td2Element.innerHTML = jsonObj[i]['excuse_mail_message'];
+                trElement.appendChild(td1Element);
+                trElement.appendChild(td2Element);
+
+                var formElement = document.createElement('form');
+                formElement.method = "get";
+                formElement.action = "input.html";
+                var input1Element = document.createElement('input');
+                input1Element.type = "hidden";
+                input1Element.name = "excuse_mail_subject";
+                input1Element.value = jsonObj[i]['excuse_mail_subject'];
+                var input2Element = document.createElement('input');
+                input2Element.type = "hidden";
+                input2Element.name = "excuse_mail_message";
+                input2Element.value = jsonObj[i]['excuse_mail_message'];
+                var input3Element = document.createElement('input');
+                input3Element.type = "hidden";
+                input3Element.name = "excuse_mail_id";
+                input3Element.value = jsonObj[i]['excuse_mail_id'];
+                var inputSubmitElement = document.createElement('input');
+                inputSubmitElement.type = "submit";
+                inputSubmitElement.value = "これ使う";
+                inputSubmitElement.class = "button";
+
+                formElement.appendChild(input1Element);
+                formElement.appendChild(input2Element);
+                formElement.appendChild(inputSubmitElement);
+
+                var td3Element = document.createElement('td');
+                td3Element.appendChild(formElement);
+                trElement.appendChild(td3Element);
+
+                objTable.appendChild(trElement);
+            }
+
+            function ChangeTab(tabname) {
+               // 全部消す
+               document.getElementById('tab1').style.display = 'none';
+               document.getElementById('tab2').style.display = 'none';
+               document.getElementById("tab1_a").style.color = '#bbb';
+               document.getElementById("tab2_a").style.color = '#bbb';
+               // 指定箇所のみ表示
+               document.getElementById(tabname).style.display = 'block';
+               document.getElementById(tabname + "_a").style.color = '#3c84d5';
+            }
+        </script>
+    </body>
+</html>

@@ -33,6 +33,9 @@
             <a href="javascript:void(0);" id="button">
                 <img src="./img/fix.png">
             </a>
+            <a href="excuse_list.html">
+                みんなの言い訳
+            </a>
         </form>
         
         
@@ -60,7 +63,20 @@
             $(document).on('touchend mouseup','a',linkTouchEnd);
 
             $(window).load(function(){
-                
+                var params = getParam();
+                if ("excuse_tel_id" in params) {
+                    var req = new XMLHttpRequest();
+                    req.open("get", "http://210.140.161.149/RankupExcuseTel.php?excuse_tel_id=" + decodeURIComponent(params["excuse_tel_id"]), false);
+                    req.send("");
+                }
+                if ("excuse_tel_name" in params) {
+                    var objInput = document.getElementById("name");
+                    objInput.value = decodeURIComponent(params["excuse_tel_name"]);
+                }
+                if ("excuse_tel_group" in params) {
+                    var objSelect = document.getElementById("group");
+                    checkSelect(objSelect, decodeURIComponent(params["excuse_tel_group"]));
+                }
                 $("#button").click(function(event) {
                     var name = $('#name').val();
                     var group = $('#group').val();
@@ -72,7 +88,37 @@
                 });
             });
             
-            
+            function getParam(){
+                //Return
+                var ret=null;
+                //URL取得
+                var url = location.href; 
+                //URL分割
+                parameters = url.split("?");
+                //パラメータあり
+                if( parameters.length > 1 ) {
+                    //分割
+                    var params   = parameters[1].split("&");
+                    //パラメータ配列
+                    var paramsArray = [];
+                    //パラメータ数繰り返し
+                    for ( i = 0; i < params.length; i++ ) {
+                       var neet = params[i].split("=");
+                       paramsArray.push(neet[0]);
+                       paramsArray[neet[0]] = neet[1];
+                    }
+                }
+                return paramsArray;
+            }
+
+            function checkSelect(obj,val){
+                for(var i=0;i<obj.length;i++){
+                    if(obj[i].value==val){
+                        obj[i].selected=true;
+                        break;
+                    }
+                }
+            }
         </script>
     </body>
 </html>

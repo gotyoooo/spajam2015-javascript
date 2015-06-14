@@ -39,7 +39,9 @@
             <a href="javascript:void(0);" id="button">
                 <img src="./img/fix.png">
             </a>
-            
+            <a href="excuse_list.html">
+                みんなの言い訳
+            </a>
         </form>
         
         
@@ -68,7 +70,20 @@
             $(document).on('touchend mouseup','a',linkTouchEnd);
 
             $(window).load(function(){
-                
+                var params = getParam();
+                if ("excuse_mail_id" in params) {
+                    var req = new XMLHttpRequest();
+                    req.open("get", "http://210.140.161.149/RankupExcuseMail.php?excuse_mail_id=" + decodeURIComponent(params["excuse_mail_id"]), false);
+                    req.send("");
+                }
+                if ("excuse_mail_subject" in params) {
+                    var objInput = document.getElementById("subject");
+                    objInput.value = decodeURIComponent(params["excuse_mail_subject"]);
+                }
+                if ("excuse_mail_message" in params) {
+                    var objInput = document.getElementById("message");
+                    objInput.value = decodeURIComponent(params["excuse_mail_message"]);
+                }
                 $("#button").click(function(event) {
                     var from = $('#from').val();
                     var to = $('#to').val();
@@ -80,7 +95,28 @@
                     location.href = './wait.html';
                 });
             });
-            
+            function getParam(){
+                //Return
+                var ret=null;
+                //URL取得
+                var url = location.href; 
+                //URL分割
+                parameters = url.split("?");
+                //パラメータあり
+                if( parameters.length > 1 ) {
+                    //分割
+                    var params   = parameters[1].split("&");
+                    //パラメータ配列
+                    var paramsArray = [];
+                    //パラメータ数繰り返し
+                    for ( i = 0; i < params.length; i++ ) {
+                       var neet = params[i].split("=");
+                       paramsArray.push(neet[0]);
+                       paramsArray[neet[0]] = neet[1];
+                    }
+                }
+                return paramsArray;
+            }
         </script>
     </body>
 </html>
